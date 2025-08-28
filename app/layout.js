@@ -18,8 +18,8 @@ export default function RootLayout({ children, modal }) {
     <html lang="en">
       <body>
         {children}
-        {modal} {/* Modal slot */}
-        <div id="modal-root-content" /> {/* Needed for portal */}
+        {modal} 
+        <div id="modal-root-content" /> 
       </body>
     </html>
   );

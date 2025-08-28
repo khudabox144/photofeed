@@ -2,18 +2,16 @@ import Image from "next/image";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 
 const PhotoDetails = async ({ id, lang }) => {
-  // Fetch photo data
+  
   const response = await fetch(`http://localhost:3000/api/photos/${id}`);
   const photo = await response.json();
-    // console.log(photo);
-  // Fetch dictionary
+    
   const dictionary = await getDictionary(lang);
 
-  // Fallback images
+  
   const fallbackImage = "/default-image.png";
   const fallbackAvatar = "/default-avatar.png";
-
-//   console.log(photo.title);
+;
 
   return (
     <div className="grid grid-cols-12 gap-4 2xl:gap-10 " >
