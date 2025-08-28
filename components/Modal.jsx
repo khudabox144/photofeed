@@ -2,22 +2,29 @@
 
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const Modal = ({ children }) => {
   const modalRef = useRef(null);
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (!modalRef.current?.open) {
+    setMounted(true); 
+  }, []);
+
+  useEffect(() => {
+    if (modalRef.current?.open === false) {
       modalRef.current?.showModal();
     }
-  }, []);
+  }, [mounted]);
 
   function onHide() {
     router.back();
   }
+
+  if (!mounted) return null;
 
   return createPortal(
     <dialog
